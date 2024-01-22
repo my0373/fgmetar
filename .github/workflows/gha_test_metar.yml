@@ -35,22 +35,17 @@ jobs:
       - name: Install pyenv
         run: curl https://pyenv.run | bash
       
-      # - name: Update system pip to use artifactory
-      #   env:
-      #     PYPI_URI : format('index-url = {0}', '${{ secrets.PYPI_URI }}' )
-      #   run: |
-      #     mkdir ~/.pip
-      #     echo "[global]" > ~/.pip/pip.conf
-      #     echo ${PYPI_URI} >> ~/.pip/pip.conf
-      
       - name: Install pipenv
         env:
           PYPI_URI : ${{ secrets.PYPI_URI }}
         run: pip install pipenv --extra-index-url=${PYPI_URI}
       
       - name: Install python virtual environment
+        env:
+          PYPI_URI : ${{ secrets.PYPI_URI }}
         run: |
-          pipenv install --dev --verbose
+          pipenv install --dev --pypi-mirror=${PYPI_URI} --verbose
+          
       - name: Run python tests
         env:
           METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
