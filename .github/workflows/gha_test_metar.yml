@@ -31,6 +31,8 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.9
+      - name: Install pyenv
+        run: pip install pyenv
       - name: Install pipenv
         run: pip install pipenv
       - name: Install python virtual environment
