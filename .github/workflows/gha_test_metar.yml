@@ -41,7 +41,7 @@ jobs:
         run: |
           mkdir ~/.pip
           echo "[global]" > ~/.pip/pip.conf
-          echo f >> ~/.pip/pip.conf
+          echo ${PYPI_URI} >> ~/.pip/pip.conf
       
       - name: Install pipenv
         run: pip install pipenv
