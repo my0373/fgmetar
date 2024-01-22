@@ -39,7 +39,11 @@ jobs:
         run: |
           pipenv install --dev
       - name: Run python tests
-        run: pipenv run pytest
+        run: | 
+          pipenv shell
+          python ./tests.py
+
+
 
 
 
