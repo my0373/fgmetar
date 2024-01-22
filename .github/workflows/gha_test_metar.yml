@@ -44,6 +44,10 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Configure the Python environment
+        env:
+          METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
+          METAR_ICAO: ${{ vars.METAR_ICAO }}
+          METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}
         run: |
           cd src
           python ./metar.py
