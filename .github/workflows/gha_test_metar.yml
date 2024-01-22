@@ -34,8 +34,16 @@ jobs:
           python-version: 3.9
       - name: Install pyenv
         run: curl https://pyenv.run | bash
+      
+      - name: Update system pip to use artifactory
+        run: |
+          mkdir ~/.pip
+          echo "[global]" > ~/.pip/pip.conf
+          echo format('index-url = {0}', secrets.PYPI_URI') >> ~/.pip/pip.conf
+      
       - name: Install pipenv
         run: pip install pipenv
+      
       - name: Install python virtual environment
         run: |
           pipenv install --dev --verbose
