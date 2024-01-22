@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir ~/.pip
           echo "[global]" > ~/.pip/pip.conf
-          echo format('index-url = {0}', secrets.PYPI_URI) >> ~/.pip/pip.conf
+          echo format('index-url = {0}', ${{ secrets.PYPI_URI }}) >> ~/.pip/pip.conf
       
       - name: Install pipenv
         run: pip install pipenv
