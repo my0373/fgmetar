@@ -33,7 +33,7 @@ def main():
 
 
 def get_metar(uri, api_key):
-    response = httpx.get(url=uri, headers={'X-API-Key': api_key})
+    response = httpx.get(url=uri, headers={'X-API-Key': api_key}, verify=False)
     return response
 
 
