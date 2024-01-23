@@ -1,9 +1,6 @@
 FROM soleng.jfrog.io/matthewy-ci-containers/python:3
 ARG PYPI_REPO_VAR
-COPY . /app
-COPY Pipfile* /app
-RUN ls -l /app
-RUN ls / 
+COPY ../* /app
 WORKDIR /app
 RUN ls -l .
 RUN echo "Log ${PYPI_REPO_VAR}"
