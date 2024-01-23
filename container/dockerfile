@@ -3,8 +3,8 @@ FROM soleng.jfrog.io/matthewy-ci-containers/python:3
 COPY . /app
 WORKDIR /app
 
-RUN pip install pipenv --extra-index-url=${{secrets.PYPI_URI}}
+RUN pip install pipenv --extra-index-url=${PYPI_URI}
       
-RUN pipenv install --system --deploy
+RUN pipenv install --system --deploy --extra-index-url=${PYPI_URI}
 
 CMD ["python", "./src/metar.py"]

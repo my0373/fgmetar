@@ -46,7 +46,7 @@ jobs:
           pwd
           ls -lrt .
 
-          docker build -t mwtar:1 ./container/
+          docker build --build-arg "PYPI_URI=${{ secrets.PYPI_URI }}" -t mwtar:1 ./container/
       # - name: Install pyenv
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
