@@ -3,6 +3,7 @@ ARG PYPI_REPO_VAR
 COPY . /app
 COPY Pipfile* /app
 RUN ls -l /app
+RUN ls / 
 WORKDIR /app
 RUN ls -l .
 RUN echo "Log ${PYPI_REPO_VAR}"
