@@ -1,0 +1,10 @@
+FROM python:3
+
+COPY . /app
+WORKDIR /app
+
+RUN pip install pipenv --extra-index-url=${PYPI_URI}
+      
+RUN pipenv install --system --deploy
+
+CMD ["python", "./src/metar.py"]
