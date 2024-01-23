@@ -7,6 +7,7 @@ RUN ls -l .
 RUN echo "Log ${PYPI_REPO_VAR}"
 RUN pip install pipenv --extra-index-url=${PYPI_REPO_VAR}
       
-RUN pipenv install --system --deploy --extra-index-url=${PYPI_REPO_VAR}
+RUN pipenv install --extra-index-url=${PYPI_REPO_VAR}
+# RUN pipenv install --system --deploy --extra-index-url=${PYPI_REPO_VAR}
 
-CMD ["python", "./src/metar.py"]
+CMD ["pipenv", "run", "./src/metar.py"]
