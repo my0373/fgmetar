@@ -45,7 +45,7 @@ jobs:
           PYPI_URI : ${{ secrets.PYPI_URI }}
         run: |
           pipenv install --dev --pypi-mirror=${PYPI_URI} --verbose
-          
+
       - name: Run python tests
         env:
           METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
@@ -53,6 +53,15 @@ jobs:
           METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}        
         run: | 
           pipenv run  python ./tests.py
+
+      - name: Run python tests
+        env:
+          METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
+          METAR_ICAO: ${{ vars.METAR_ICAO }}
+          METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}        
+        run: | 
+          cd src
+          pipenv run  python ./metar.py
 
       # # Runs a set of commands using the runners shell
       # - name: Configure the Python environment
