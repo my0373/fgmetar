@@ -2,8 +2,9 @@ FROM soleng.jfrog.io/matthewy-ci-containers/python:3
 
 COPY . /app
 COPY Pipfile* /app
+RUN ls -l /app
 WORKDIR /app
-
+RUN ls -l .
 
 RUN pip install pipenv --extra-index-url=${PYPI_URI}
       
