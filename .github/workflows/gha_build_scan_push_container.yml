@@ -56,7 +56,12 @@ jobs:
 
       - name: Push the image to artifactory
         run: docker push soleng.jfrog.io/matthewy-ci-containers/mwtar:1
-        
+
+      - name: remove the local image
+        run: docker image rm  soleng.jfrog.io/matthewy-ci-containers/mwtar:1
+
+      - name: Pull the imahe
+        run: docker run soleng.jfrog.io/matthewy-ci-containers/mwtar:1
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
       #   env:
