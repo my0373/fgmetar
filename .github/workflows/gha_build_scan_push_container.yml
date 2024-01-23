@@ -36,12 +36,17 @@ jobs:
       - name: Authenticate with the artifactory repository
         run: echo ${{ secrets.JFROG_CONTAINER_TOKEN }} | docker login -u ${{ vars.JFROG_REPO_USER }} --password-stdin ${{vars.JFROG_CONTAINER_REPO}}
 
+      - name: Debug
+        run: |
+          pwd
+          ls -lrt .
+
       - name: Build the container file 
         run: |
           pwd
           ls -lrt .
-          cd container
-          docker build -t mwtar:1 .
+
+          docker build -t mwtar:1 ./container/
       # - name: Install pyenv
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
