@@ -5,7 +5,7 @@ COPY Pipfile* /app
 RUN ls -l /app
 WORKDIR /app
 RUN ls -l .
-
+RUN echo "Log ${PYPI_URI}""
 RUN pip install pipenv --extra-index-url=${PYPI_URI}
       
 RUN pipenv install --system --deploy --extra-index-url=${PYPI_URI}
