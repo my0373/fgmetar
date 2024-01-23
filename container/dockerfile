@@ -1,13 +1,13 @@
 FROM soleng.jfrog.io/matthewy-ci-containers/python:3
-
+ARG PYPI_REPO_VAR
 COPY . /app
 COPY Pipfile* /app
 RUN ls -l /app
 WORKDIR /app
 RUN ls -l .
-RUN echo "Log ${pypirepo}"
-RUN pip install pipenv --extra-index-url=${PYPI_URI}
+RUN echo "Log ${PYPI_REPO_VAR}"
+RUN pip install pipenv --extra-index-url=${PYPI_REPO_VAR}
       
-RUN pipenv install --system --deploy --extra-index-url=${pypirepo}
+RUN pipenv install --system --deploy --extra-index-url=${PYPI_REPO_VAR}
 
 CMD ["python", "./src/metar.py"]

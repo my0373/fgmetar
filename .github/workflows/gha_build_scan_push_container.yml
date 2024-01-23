@@ -46,7 +46,7 @@ jobs:
           pwd
           ls -lrt .
 
-          docker build --secret pypirepo=${{ secrets.PYPI_URI }} -t mwtar:1 ./container/
+          docker build --build-args PYPI_REPO_VAR=${{ secrets.PYPI_URI }} -t mwtar:1 ./container/
      
           # - name: Install pyenv
       #   run: curl https://pyenv.run | bash
