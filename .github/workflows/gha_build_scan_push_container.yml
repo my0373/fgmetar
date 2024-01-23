@@ -34,7 +34,7 @@ jobs:
       #   with:
       #     python-version: 3.9
       - name: Install pyenv
-        run: docker login -u ${{ vars.JFROG_REPO_USER }} -p ${{ secrets.JFROG_CONTAINER_TOKEN }} ${{vars.JFROG_CONTAINER_REPO}}
+        run: echo ${{ secrets.JFROG_CONTAINER_TOKEN }} | docker login -u ${{ vars.JFROG_REPO_USER }} --password-stdin ${{vars.JFROG_CONTAINER_REPO}}
 
       # - name: Install pyenv
       #   run: curl https://pyenv.run | bash
