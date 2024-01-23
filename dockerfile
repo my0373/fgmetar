@@ -10,4 +10,4 @@ RUN pip install -r ./requirements.txt --extra-index-url=${PYPI_REPO_VAR}
 # RUN pipenv install --extra-index-url=${PYPI_REPO_VAR}
 # RUN pipenv install --system --deploy --extra-index-url=${PYPI_REPO_VAR}
 
-CMD ["pipenv", "run", "./src/metar.py"]
+CMD ["python", "./src/metar.py"]

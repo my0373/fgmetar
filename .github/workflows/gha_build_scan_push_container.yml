@@ -48,7 +48,9 @@ jobs:
 
           docker build --build-arg PYPI_REPO_VAR=${{ secrets.PYPI_URI }} -t mwtar:1 .
      
-          # - name: Install pyenv
+      - name: Get list of docker images on the runner
+        run: docker image list
+        
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
       #   env:
