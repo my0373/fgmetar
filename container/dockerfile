@@ -1,7 +1,8 @@
 FROM soleng.jfrog.io/matthewy-ci-containers/python:3
 ARG PYPI_REPO_VAR
-COPY ../* /
-WORKDIR /
+RUN mkdir -p /app/
+COPY ../* /app
+WORKDIR /app
 RUN ls -l .
 RUN echo "Log ${PYPI_REPO_VAR}"
 RUN pip install pipenv --extra-index-url=${PYPI_REPO_VAR}
