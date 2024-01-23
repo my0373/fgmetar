@@ -33,9 +33,13 @@ jobs:
       #   uses: actions/setup-python@v3
       #   with:
       #     python-version: 3.9
-      - name: Install pyenv
+      - name: Authenticate with the artifactory repository
         run: echo ${{ secrets.JFROG_CONTAINER_TOKEN }} | docker login -u ${{ vars.JFROG_REPO_USER }} --password-stdin ${{vars.JFROG_CONTAINER_REPO}}
 
+      - name: Build the container file 
+        run: |
+          cd container
+          docker build -t mwtar:1
       # - name: Install pyenv
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
