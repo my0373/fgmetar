@@ -39,7 +39,7 @@ jobs:
       - name: Build the container file 
         run: |
           cd container
-          docker build -t mwtar:1
+          docker build -t mwtar:1 .
       # - name: Install pyenv
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
