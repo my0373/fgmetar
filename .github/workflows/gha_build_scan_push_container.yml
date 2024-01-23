@@ -1,0 +1,77 @@
+# This is a basic workflow to help you get started with Actions
+
+
+# name: Run metar unit tests
+on:
+  workflow_dispatch:
+
+# Controls when the workflow will run
+# on:
+#   # Triggers the workflow on push or pull request events but only for the "main" and dev branches
+#   push:
+#     branches: [ "dev", "main" ]
+#   pull_request:
+#     branches: [ "dev", "main" ]
+  
+
+  # Allows you to run this workflow manually from the Actions tab
+  # workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: Development
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+
+      # - name: Set up Python 3.9
+      #   uses: actions/setup-python@v3
+      #   with:
+      #     python-version: 3.9
+      - name: Install pyenv
+        run: docker login -u ${{ vars.JFROG_REPO_USER }} -p ${{ secrets.JFROG_CONTAINER_TOKEN }} ${{vars.JFROG_CONTAINER_REPO}}
+
+      # - name: Install pyenv
+      #   run: curl https://pyenv.run | bash
+      # - name: Install pipenv
+      #   env:
+      #     PYPI_URI : ${{ secrets.PYPI_URI }}
+      #   run: pip install pipenv --extra-index-url=${PYPI_URI}
+      
+      # - name: Install python virtual environment
+      #   env:
+      #     PYPI_URI : ${{ secrets.PYPI_URI }}
+      #   run: |
+      #     pipenv install --dev --pypi-mirror=${PYPI_URI} --verbose
+
+      # - name: Run python tests
+      #   env:
+      #     METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
+      #     METAR_ICAO: ${{ vars.METAR_ICAO }}
+      #     METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}        
+      #   run: | 
+      #     pipenv run  python ./tests.py
+
+      # - name: Run a metar query
+      #   env:
+      #     METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
+      #     METAR_ICAO: ${{ vars.METAR_ICAO }}
+      #     METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}        
+      #   run: | 
+      #     cd src
+      #     pipenv run  python ./metar.py
+
+      # # Runs a set of commands using the runners shell
+      # - name: Configure the Python environment
+      #   env:
+      #     METAR_API_KEY: ${{ secrets.METAR_API_KEY }}
+      #     METAR_ICAO: ${{ vars.METAR_ICAO }}
+      #     METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}
+      #   run: |
+      #     cd src
+      #     python ./metar.py
