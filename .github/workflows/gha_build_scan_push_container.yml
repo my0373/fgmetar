@@ -50,6 +50,12 @@ jobs:
      
       - name: Get list of docker images on the runner
         run: docker image list
+      
+      - name: Retag the image for artifactory
+        run: docker tag mwtar:1 soleng.jfrog.io/matthewy-ci-containers/mwtar:1
+
+      - name: Push the image to artifactory
+        run: docker push soleng.jfrog.io/matthewy-ci-containers/mwtar:1
         
       #   run: curl https://pyenv.run | bash
       # - name: Install pipenv
