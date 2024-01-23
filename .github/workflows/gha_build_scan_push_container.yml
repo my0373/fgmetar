@@ -38,6 +38,8 @@ jobs:
 
       - name: Build the container file 
         run: |
+          pwd
+          ls -lrt .
           cd container
           docker build -t mwtar:1 .
       # - name: Install pyenv
