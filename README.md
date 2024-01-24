@@ -1,5 +1,5 @@
 # fgmetar
-Script to pull in Metar weather data..
+Script to pull in Metar weather data.
 
 # To set up the environment
 Configure the following environment variables, either directly, or update the ```./config/config.env``` file
