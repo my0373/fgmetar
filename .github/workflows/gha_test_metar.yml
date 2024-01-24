@@ -8,8 +8,7 @@ name: Test the application
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" and dev branches
-  push:
-    branches: [ '*' ]
+
   pull_request:
     branches: [ "dev", "main" ]
   
