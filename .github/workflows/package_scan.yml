@@ -21,7 +21,9 @@ jobs:
 
        # Create a pip build configuration using the pyci-pypi jfrog repository.
        - name: Set CLI Config
-         run: jf pip-config --global=true --repo-resolve=${{ vars.PIP_REPO }}
+         run: |
+           jf c add --url=${{ vars.JF_SERVER }}
+           jf pip-config --global=true --repo-resolve=${{ vars.PIP_REPO }}
 
 
        # Install the package dependencies
@@ -54,4 +56,4 @@ jobs:
           # Collect VCS details from git and add them to the build
           jf rt build-add-git
           # Publish build info
-          jf rt build-publish --project=${{ vars.JF_PROJECT_NAME }}
+          jf rt build-publish --project=${{ env.JF_PROJECT_NAME }}
