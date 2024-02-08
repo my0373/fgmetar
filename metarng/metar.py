@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import httpx
-import json
 import sys
 
 
@@ -9,7 +8,7 @@ import sys
 
 def main():
 
-    load_dotenv(dotenv_path="../config/config.env")
+    load_dotenv(dotenv_path="./config.env")
     ICAO = os.environ.get("METAR_ICAO")
     API_KEY = os.environ.get("METAR_API_KEY")
     API_URI = os.environ.get("METAR_SERVICE_URI")

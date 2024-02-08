@@ -1,5 +1,5 @@
 import unittest
-from src.metar import get_metar
+from metarng.metar import get_metar
 import os
 from dotenv import load_dotenv
 import httpx
@@ -7,7 +7,7 @@ import json
 
 class TestMetar(unittest.TestCase):
     def setUp(self):
-        load_dotenv(dotenv_path="./config/config.env")
+        load_dotenv(dotenv_path="metarng/config.env")
 
         self.ICAO = os.environ.get("METAR_ICAO")
         self.API_KEY = os.environ.get("METAR_API_KEY")
