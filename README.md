@@ -27,7 +27,7 @@ python ./tests.py
 
 Run the script
 ```shell
-cd src
+cd metarng
 python ./metar.py
 ```
 

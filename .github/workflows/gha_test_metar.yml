@@ -63,5 +63,5 @@ jobs:
       #     METAR_ICAO: ${{ vars.METAR_ICAO }}
       #     METAR_SERVICE_URI: ${{ vars.METAR_SERVICE_URI }}
       #   run: |
-      #     cd src
+      #     cd metarng
       #     python ./metar.py
